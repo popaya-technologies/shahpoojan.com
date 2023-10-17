@@ -18,7 +18,7 @@ const ShowcaseSection = () => {
   const onReady = (e) => {
     const player = e.target;
 
-    player.playVideo();
+    if (isInView) player.playVideo();
   };
 
   const onError = (error) => {

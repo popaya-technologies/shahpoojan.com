@@ -12,16 +12,22 @@ export async function POST(req, res) {
 
   try {
     const data = await resend.emails.send({
-      from: fromEmail,
+      from: `Poojan Shah <${fromEmail}>`,
       to: ["pshah@shahpoojan.com", email],
       subject: subject,
       react: (
         <>
-          <h1>{name}</h1>
+          <p>
+            Thank you for contacting me. Please expect a reply within next 24 to
+            48 hours!
+          </p>
+          <h4>{name}</h4>
           <p>{subject}</p>
-          <p>Thank you for contacting us!</p>
-          <p>New message submitted:</p>
-          <p>{message}</p>
+          <p>
+            New message submitted:
+            <br />
+            {message}
+          </p>
         </>
       ),
     });

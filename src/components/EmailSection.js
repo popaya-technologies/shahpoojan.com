@@ -17,32 +17,28 @@ const EmailSection = () => {
       message: e.target.message.value,
     };
 
-    // const JSONdata = JSON.stringify(data);
-    // const endpoint = "/api/send";
+    const JSONdata = JSON.stringify(data);
+    const endpoint = "/api/send";
 
-    // const options = {
-    //   method: "POST",
-    //   // headers: {
-    //   //   "Content-Type": "application/json",
-    //   // },
-    //   body: JSONdata,
-    // };
-
-    const response = await fetch("/api/send", {
+    const options = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
-    });
+      body: JSONdata,
+    };
 
-    console.log(response);
-    // const resData = await response.json();
+    const response = await fetch(endpoint, options);
+    const resData = await response.json();
 
-    // if (response.status === 200) {
-    //   console.log("Message sent successfully");
-    //   setEmailSubmitted(true);
-    // }
+    if (response.status === 200) {
+      console.log("Message sent successfully");
+      setEmailSubmitted(true);
+      e.target.name.value = "";
+      e.target.email.value = "";
+      e.target.subject.value = "";
+      e.target.message.value = "";
+    }
   };
   return (
     <section
